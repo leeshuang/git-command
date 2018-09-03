@@ -26,37 +26,54 @@
 
 1. 版本号查询
 
-   `$ git --version`
-
-   
+   ```
+   $ git --version
+   ```
 
 2. 查看配置信息
 
    + 列出所有Git当时可找到的配置 （重复变量名为不同文件中的同一配置）
 
-   ​        `$ git config --list`
+     ```
+     $ git config --list
+     ```
 
    + 查看Git某一项配置
 
-      `$ git config <key>`
-
-      `Eg:$ git config user.name`
-
-     
+      ```
+      $ git config <key>
+      
+      Eg:$ git config user.name
+      ```
 
 3. Git帮助，查询命令手册
 
    + 查询Git拥有的命令列表，以及每个命令的简介
 
-     `$ git --help`
+     ```
+     $ git --help
+     ```
 
    + 查询某个命令的具体介绍
 
-   ​        `$ git help <verb>` or
+     ```
+     $ git help <verb>
+     $ git <verb> --help
+     $ man git-<verb>
+     ```
 
-   ​        `$ git <verb> --help`  or
 
-   ​        `$ man git-<verb>`
+4.查看远程仓库，列出指定的每一个远程服务器的简写
+
+```
+git remote
+```
+
+7、查看当前分支列表
+
+```
+$ git branch
+```
 
 
 
@@ -66,24 +83,38 @@
 
 1. 初始化仓库
 
-   `$ git init`
+   ```
+   $ git init
+   ```
 
 2. 跟踪指定文件
 
-   `$ git add [file]`
+   ```
+   $ git add [file]
+   ```
 
 3. 提交到本地仓库
 
-   `$ git commit -m 'commit message'`
+   ```
+   $ git commit -m 'commit message'
+   ```
 
-   
 
 ##### 2.从服务器clone一个现有的Git仓库 #####
 
-​    Git clone 命令将拉取默之配置下远程Git的每一个文件的每一个版本；此时每个文件都属于已跟踪未修改状态
+    Git clone 命令将拉取默之配置下远程Git的每一个文件的每一个版本；此时每个文件都属于已跟踪未修改状态
 
-1. 默认使用远程仓库名称：`$ git clone [url]`
-2. 自定义本地仓库名： `$ git clone [url] [new name]`
+1. 默认使用远程仓库名称：
+
+   ```
+   $ git clone [url]
+   ```
+
+2. 自定义本地仓库名：
+
+   ```
+   $ git clone [url] [new name]
+   ```
 
 
 
@@ -91,31 +122,36 @@
 
 1. 查看文件当前状态
 
-   `$ git status`
+   ```
+   $ git status
+   ```
 
    查看紧凑版状态输出
 
-   `$ git status -s/--short`
-
-   
+   ```
+   $ git status -s/--short
+   ```
 
 2. 查看文件具体修改
 
    + 查看尚未暂存的改动
 
-     `$ git diff`
+     ```
+     $ git diff
+     ```
 
    + 查看已暂存的改动
 
-     `$ git diff --cached` 
-
-     `$ git diff --staged //版本>1.6.1`
-
-     
+     ```
+     $ git diff --cached
+     $ git diff --staged //版本>1.6.1
+     ```
 
 3. 查看提交历史
 
-   `$ git log <verb>`
+   ```
+   $ git log <verb>
+   ```
 
    参数 `<verb>`（可叠加使用）：
 
@@ -155,18 +191,18 @@
 
 * 已修改（modified):自上次暂存/提交后（或者初次clone某个仓库后），对文件作出修改、编辑，Git会将该文件标记为已修改文件
 
-  
 
 2、添加内容至下一次提交（不是将文件放入项目）
 
-​	`$ git add [file]`  
-​	`$ git add -A`  //添加所有文件
+```
+$ git add [file]/*      //单个文件/所有文件
+```
 
-​      file：文件或者目录的路径，若为目录路径，将递归跟踪该路径下所有文件
+      file：文件或者目录的路径，若为目录路径，将递归跟踪该路径下所有文件
 
 + 跟踪新文件（未跟踪）
 
-​       状态变化：untracked==>tracked、staged
+       状态变化：untracked==>tracked、staged
 
 + 暂存已修改的文件（已跟踪）
 
@@ -174,7 +210,7 @@
 
 + 将合并时有冲突的文件标记为已解决状态
 
-​        **状态变化：**
+        **状态变化：**
 
 
 
@@ -216,9 +252,133 @@
 
 
 
+#### 撤销操作 ####
+
+1、重新提交，将取代上一次的提交结果
+
+```
+$ git commit --amend
+```
+
+2、取消暂存某个文件
+
+```
+$ git reset HEAD <file name>
+```
+
+3、撤销对文件的修改，还原为上次提交/初始化时的状态（该操作不可修复！！！）
+
+```
+git checkout -- <file>
+```
+
+
+
+#### Git分支 ####
+
+1、创建新分支
+
+```
+$ git branch [branch-name]
+```
+
+2、切换分支
+
+```
+$ git checkout [brabch-name]
+```
+
+3、新建分支的同时切换到该分支
+
+```
+$ git checkout -b [branch-name]
+```
+
+4、合并分支（假设当前在`develop`分支，合并到`master`分支）
+
+```
+$ git checkout master
+$ git merge develop
+```
+
+5、删除分支
+
+```
+$ git branch -d [branch-name]
+```
+
+6、查看合并冲突
+
+```
+$ git status
+
+```
+
+7、查看当前分支列表
+
+```
+$ git branch
+```
+
+
+
+#### 远程仓库 ####
+
+1、添加远程仓库（默认分支名`origin`，默认分支`master`）
+
+```
+git remote add <shortname> <url> 
+```
+
+2、从远程仓库抓取（所有分支）数据，需手动合并
+
+```
+$ git fetch [remote-name/shortname]
+```
+
+3、从远程仓库拉取已跟踪远程分支并自动合并到当前分支
+
+```
+$ git pull
+```
+
+4、推送到远程仓库
+
+```
+$ git push [remote-name] [branch-name]
+```
+
+注：若当前远程分支有他人推送记录，必须先将最新变动拉取到本地合并
+
+5、修改远程仓库名称
+
+```
+$ git remote rename [oldname] [newname]
+```
+
+6、移除远程仓库
+
+```
+$ git remote rm [remote-name]
+```
+
+7、查看当前仓库
+
+```
+$ git remote
+```
+
+8、删除origin远程分支
+
+```
+$ git push origin --delete [branch-name]
+```
+
+
+
 #### 忽略文件 .gitignore ####
 
-​      不希望加入Git管理，也不希望总是出现在未跟踪文件列表的文件，例如一些临时文件，日志，依赖包等
+      不希望加入Git管理，也不希望总是出现在未跟踪文件列表的文件，例如一些临时文件，日志，依赖包等
 
 方法：创建`.gitignore`文件，列出需要忽略的文件模式
 
@@ -252,7 +412,7 @@ $ cat .gitignore    //创建.gitignore文件
 
 3. 提交
 
-   
+    
 
 删除情景：
 
@@ -264,8 +424,7 @@ $ cat .gitignore    //创建.gitignore文件
    $ git commit -m "delete file"
    ```
 
-
-2. 工作区已修改，但是未暂存，从仓库删除，本地不保留：`-f` 强制删除暂存区同时删除工作区(*防止普通删除操作将未暂存的文件删除*)
+1. 工作区已修改，但是未暂存，从仓库删除，本地不保留：`-f` 强制删除暂存区同时删除工作区(*防止普通删除操作将未暂存的文件删除*)
 
    ```
    $ rm [file]
@@ -273,9 +432,7 @@ $ cat .gitignore    //创建.gitignore文件
    $ git commit -m "delete file"
    ```
 
-   
-
-3. 从仓库删除，本地保留：删除暂存区变动，保留工作区文件（*适用于将文件添加到`.gitignore`*）
+2. 从仓库删除，本地保留：删除暂存区变动，保留工作区文件（*适用于将文件添加到`.gitignore`*）
 
    ```
    $ rm [file]
@@ -301,8 +458,6 @@ $ git add file_new
 
 使用其他工具批量改名时要记得删除老的文件名，再添加新的文件名
 
-
-
 ```
 $ rm [file]
 $ git rm [file]
@@ -310,6 +465,8 @@ $ git commit -m "delete file"
 ```
 
 
+
+####  ####
 
 #### Git名词解释####
 
