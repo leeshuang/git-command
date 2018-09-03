@@ -216,7 +216,7 @@ $ git add [file]/*      //单个文件/所有文件
 
 ![lifecycle](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
-[Figure 1.文件状态变化][fihure]  
+[Figure 1.文件状态变化][figure]  
 
 
 
