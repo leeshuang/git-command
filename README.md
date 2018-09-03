@@ -216,11 +216,11 @@ $ git add [file]/*      //单个文件/所有文件
 
 ![lifecycle](https://git-scm.com/book/en/v2/images/lifecycle.png)
 
-[Figure 1.文件状态变化][fihure 1]  
+[Figure 1.文件状态变化][fihure]  
 
 
 
-[figure 1]: https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93	"点击查看图片来源"
+[figure]: https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E8%AE%B0%E5%BD%95%E6%AF%8F%E6%AC%A1%E6%9B%B4%E6%96%B0%E5%88%B0%E4%BB%93%E5%BA%93	"点击查看图片来源"
 
 
 
